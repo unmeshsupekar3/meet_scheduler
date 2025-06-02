@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+langchain
+langchain-community
+langchain-ollama
+sqlite-utils
+python-dotenv
+pydantic
+python-dateutil
+tqdm
+httpx
+streamlit
+ipython
