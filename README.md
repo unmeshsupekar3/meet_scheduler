@@ -1,10 +1,22 @@
-# meet_scheduler
+# 🗓️ CliniSync: AI Meeting Scheduler
 
 
-Install Ollama locally
 
-then use 
+An AI-powered app to schedule, reschedule, and manage meetings using a smart chat interface.
 
-ollama pull gemma3:4b
+![Concept Map](demo/clinisync_logo.png)
 
-pip install -r requirements.txt
+## 📸 Screenshot
+
+![Concept Map](demo/concept_map.png)
+## 🎥 Demo Video
+
+[Watch the demo video](demo/clinisync.mp4)
+
+<!-- Or use a clickable thumbnail -->
+
+<p align="center">
+  <a href="demo/clinisync.mp4">
+    <img src="demo/screen.png" alt="clinisync" width="500"/>
+  </a>
+</p>

@@ -56,18 +56,28 @@ cfm = ChatFlowModel()
 left_col, right_col = st.columns([3, 1])
 
 # Initial calendar display
+# with left_col:
+#     with st.expander("📅 Your Meeting Calendar", expanded=True):
+#         show_calendar_and_event_details(key_prefix="initial")
+if "calendar_refresh_key" not in st.session_state:
+    st.session_state.calendar_refresh_key = "initial"
+
 with left_col:
     with st.expander("📅 Your Meeting Calendar", expanded=True):
-        show_calendar_and_event_details(key_prefix="initial")
+        if st.button("🔄 Refresh Calendar"):
+            st.session_state.calendar_refresh_key = str(uuid.uuid4())
+
+        show_calendar_and_event_details(key_prefix=st.session_state.calendar_refresh_key)
 
 # Right column: Chat interface
 with right_col:
-    st.title("🤖 Meeting Scheduler Chat")
+    st.title("CliniSync")
+    st.subheader("Healthcare scheduling, reinvented -  book, change, or chat!")
 
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = []
 
-    st.markdown("Welcome! 👋 Enter your email and tell me what you'd like to do — book, reschedule, or just chat. I'll take care of the rest!")
+    st.markdown("Hello! 👋 Please enter your email and let me know if you'd like to book an appointment, reschedule, or simply have a chat. I'm here to help!")
 
     with st.form(key="chat_form", clear_on_submit=True):
         user_email = st.text_input(
@@ -113,10 +123,13 @@ with right_col:
 
                 # Friendly follow-up messages
                 if intent == "schedule":
+                    st.write("✅ Intent detected: schedule ")
                     bot_answer += "\n\n✅ Your meeting has been scheduled. You will receive an email confirmation shortly."
                 elif intent == "modify":
+                    st.write("✅ Intent detected: modify ")
                     bot_answer += "\n\n✅ Your meeting has been rescheduled. Confirmation email sent."
                 elif intent == "chitchat":
+                    st.write("✅ Intent detected: chitchat ")
                     bot_answer += "\n\n🤖 Happy to chat anytime! Need help scheduling something?"
 
             else:
